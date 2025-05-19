@@ -24,11 +24,19 @@ public class PackageSpawner : MonoBehaviour
     public DrivingSurfaceManager DrivingSurfaceManager;
     public PackageBehaviour Package;
     public List<GameObject> PackagePrefab;
+
     public PackageBehaviour obs;
     public GameObject obstaculo;
 
     public GameObject inimigoPref;
-    public PackageBehaviour inimigoPack;
+    public InimigoController inimigoControll;
+    public GameObject waypointsInimigo;
+    public GameObject[] pontos;
+
+    public Transform ponto1;
+    public Transform ponto2;
+    public Transform ponto3;
+    public Transform ponto4;
 
 
     public static Vector3 RandomInTriangle(Vector3 v1, Vector3 v2)
@@ -100,9 +108,28 @@ public class PackageSpawner : MonoBehaviour
 
     public void SpawnInimigo(ARPlane plane)
     {
+
         var inimigo = GameObject.Instantiate(inimigoPref);
         inimigo.transform.position += FindRandomLocation(plane);
-        inimigoPack = inimigo.GetComponent<PackageBehaviour>();
+        inimigoControll = inimigo.GetComponent<InimigoController>();
+
+    }
+
+    public void SpawnWaypoint(ARPlane plane)
+    {
+        var waypoint1 = GameObject.Instantiate(waypointsInimigo);
+        var waypoint2 = GameObject.Instantiate(waypointsInimigo);
+        var waypoint3 = GameObject.Instantiate(waypointsInimigo);
+        var waypoint4 = GameObject.Instantiate(waypointsInimigo);
+        waypoint1.transform.position += FindRandomLocation(plane);
+        waypoint2.transform.position += FindRandomLocation(plane);
+        waypoint3.transform.position += FindRandomLocation(plane);
+        waypoint4.transform.position += FindRandomLocation(plane);
+
+        ponto1 = waypoint1.GetComponent<Transform>();
+        ponto2 = waypoint2.GetComponent<Transform>();
+        ponto3 = waypoint3.GetComponent<Transform>();
+        ponto4 = waypoint4.GetComponent<Transform>();
     }
 
     private void Update()
@@ -118,10 +145,18 @@ public class PackageSpawner : MonoBehaviour
             {
                 SpawnObstaculo(lockedPlane);
             }
-            if (inimigoPack == null)
+
+            if (ponto1 == null && ponto2 == null && ponto3 == null && ponto4 == null)
+                SpawnWaypoint(lockedPlane);
+
+            if (inimigoControll == null)
             {
+                //pontos = GameObject.FindGameObjectsWithTag("waypoint");
+                //foreach (GameObject waypoints in pontos)
+                //    Destroy(waypoints);
                 SpawnInimigo(lockedPlane);
             }
+            
 
 
             var packagePosition = Package.gameObject.transform.position;

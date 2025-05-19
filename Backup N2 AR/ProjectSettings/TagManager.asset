@@ -7,6 +7,7 @@ TagManager:
   - Aro
   - Inimigo
   - Caixa
+  - waypoint
   layers:
   - Default
   - TransparentFX

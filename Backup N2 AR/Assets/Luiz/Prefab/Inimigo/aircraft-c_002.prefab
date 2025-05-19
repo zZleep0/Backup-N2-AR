@@ -168,11 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91e401c84976d4489a9518391a7acdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  radius: 2
-  height: 0
-  angularSpeed: 90
-  lookAtTarget: 1
+  points: []
+  speed: 0.6
+  targetPoint: 0
 --- !u!1001 &559242386403147057
 PrefabInstance:
   m_ObjectHideFlags: 0

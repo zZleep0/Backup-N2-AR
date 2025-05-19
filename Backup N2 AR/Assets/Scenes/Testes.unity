@@ -170,6 +170,7 @@ MonoBehaviour:
   obs: {fileID: 0}
   obstaculo: {fileID: 784318615118301441, guid: 6817d459d26d3644b877c7bdd0a38cde, type: 3}
   inimigoPref: {fileID: 7311156108032970888, guid: a01556def174cd646ac956a9f178b230, type: 3}
+  waypointsInimigo: {fileID: 3872195345952109256, guid: 7118e9dd007792740aea34ab165e7dee, type: 3}
   inimigoPack: {fileID: 0}
 --- !u!1 &99117141
 GameObject:
