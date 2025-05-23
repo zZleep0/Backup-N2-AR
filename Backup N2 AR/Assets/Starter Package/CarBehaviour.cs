@@ -38,6 +38,11 @@ public class CarBehaviour : MonoBehaviour
 
     private void Awake()
     {
+        AssinarUI();
+    }
+
+    public void AssinarUI()
+    {
         pontosTxt = GameObject.Find("Pontostxt").GetComponent<TextMeshProUGUI>();
         pontosTxt.text = "Pontos: " + pontos.ToString();
         arosTxt = GameObject.Find("ArosTxt").GetComponent<TextMeshProUGUI>();
@@ -46,6 +51,8 @@ public class CarBehaviour : MonoBehaviour
 
     private void Update()
     {
+        
+
         var trackingPosition = new Vector3(Reticle.transform.position.x, transform.position.y, Reticle.transform.position.z);
         if (Vector3.Distance(trackingPosition, transform.position) < 0.1)
         {

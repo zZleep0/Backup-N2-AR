@@ -14,6 +14,11 @@ public class Atirar : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        EncontrarBotoes();
+    }
+
+    public void EncontrarBotoes()
+    {
         Button btnAtirar = GameObject.Find("BtnAtirar").GetComponent<Button>();
         btnAtirar.onClick.AddListener(Disparar);
 

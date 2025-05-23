@@ -1,53 +1,70 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChoosePlane : MonoBehaviour
 {
-    public int activeScene;
     public GameObject plane;
-    public CarManager spawner;
 
     public GameObject[] planePrefab;
+
+    public GameObject uiGame;
+    public GameObject uiPregame;
+
+    public bool canStart = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        StartCoroutine(DesabilitarUI());
 
-        
-
-        
+    }
+    IEnumerator DesabilitarUI()
+    {
+        yield return new WaitForSeconds(.1f);
+        uiGame.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            DefinirAviao();
-        }
+        
     }
 
-    void DefinirAviao()
-    {
-        spawner = GameObject.Find("Car Spawner").GetComponent<CarManager>();
-        spawner.CarPrefab = plane;
-    }
 
     public void Aviao1()
     {
         plane = planePrefab[0];
-        SceneManager.LoadScene("Testes");
+
+        uiGame.SetActive(true);
+        uiPregame.SetActive(false);
+
+        canStart = true;
+
+        
     }
     public void Aviao2()
     {
         plane = planePrefab[1];
-        SceneManager.LoadScene("Testes");
+
+        uiGame.SetActive(true);
+        uiPregame.SetActive(false);
+
+        canStart = true;
+
+        
     }
     public void Aviao3()
     {
         plane = planePrefab[2];
-        SceneManager.LoadScene("Testes");
+
+        uiGame.SetActive(true);
+        uiPregame.SetActive(false);
+
+        canStart = true;
+
+        
     }
 }
